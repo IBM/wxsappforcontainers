@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- From dynacache-deployment.xml sample -->
 <deploymentPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://ibm.com/ws/objectgrid/deploymentPolicy ../deploymentPolicy.xsd"
-	xmlns="http://ibm.com/ws/objectgrid/deploymentPolicy">
+     xsi:schemaLocation="http://ibm.com/ws/objectgrid/deploymentPolicy ../deploymentPolicy.xsd"
+     xmlns="http://ibm.com/ws/objectgrid/deploymentPolicy">
 
-<!-- This file is an example deployment descriptor file for starting grid container
+     <!-- This file is an example deployment descriptor file for starting grid container
      servers for dynamic cacheing. 
      
      This file can be used "as-is".  It is subject to change with WebSphere eXtreme 
@@ -34,18 +34,16 @@
      data grid.  Having this set correctly will aid in the placement and distribution of partitions 
      throught the data grid.         
      -->
-
-
-	<objectgridDeployment objectgridName="DYNACACHE_REMOTE">
-       <mapSet name="DYNACACHE_REMOTE"
-				numberOfPartitions="47"
-				minSyncReplicas="0"
-				maxSyncReplicas="0"
-				maxAsyncReplicas="0"
-				numInitialContainers="1"
-				developmentMode="true"
-				replicaReadEnabled="false">
- 		   <map ref="IBM_DC_PARTITIONED_.*" />
-       </mapSet>
-	</objectgridDeployment>
+     <objectgridDeployment objectgridName="DYNACACHE_REMOTE">
+          <mapSet name="DYNACACHE_REMOTE"
+               numberOfPartitions="47"
+               minSyncReplicas="0"
+               maxSyncReplicas="0"
+               maxAsyncReplicas="0"
+               numInitialContainers="1"
+               developmentMode="true"
+               replicaReadEnabled="false">
+               <map ref="IBM_DC_PARTITIONED_.*" />
+          </mapSet>
+     </objectgridDeployment>
 </deploymentPolicy>

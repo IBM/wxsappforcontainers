@@ -3,8 +3,8 @@
 <objectGridConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://ibm.com/ws/objectgrid/config ../objectGrid.xsd"
 	xmlns="http://ibm.com/ws/objectgrid/config">
-	
-<!-- This file is an example ObjectGrid descriptor file for starting grid container
+
+	<!-- This file is an example ObjectGrid descriptor file for starting grid container
      servers where a near cache to be used in combination with a remote eXtreme 
      Scale grid.  It is configured to run with the eXtreme I/O transport type (XIO) using  
      eXtreme Data Formatting (XDF).  In addition, the Dependency ID and Template indexes are 
@@ -29,24 +29,24 @@
      This property must be set to true to enable a dynamic caching near cache.  This feature uses 
      pub-sub to flow TTL evictions from the far cache to the near cache instances,  keeping them
      in sync.
-     
      -->
-     
+
 	<objectGrids>
-	<objectGrid name="DYNACACHE_REMOTE" txTimeout="30">
-		<backingMap name="IBM_DC_PARTITIONED_.*" template="true"
-			readOnly="false" pluginCollectionRef="all" preloadMode="false"
-			lockStrategy="OPTIMISTIC" copyMode="COPY_TO_BYTES" ttlEvictorType="NONE"
-			nullValuesSupported="false" 
-			nearCacheInvalidationEnabled="true"
-			nearCacheLastAccessTTLSyncEnabled="true" />
-	</objectGrid>
+		<objectGrid name="DYNACACHE_REMOTE" txTimeout="30">
+			<backingMap name="IBM_DC_PARTITIONED_.*" template="true"
+				readOnly="false" pluginCollectionRef="all" preloadMode="false"
+				lockStrategy="OPTIMISTIC" copyMode="COPY_TO_BYTES" ttlEvictorType="NONE"
+				nullValuesSupported="false"
+				nearCacheInvalidationEnabled="true"
+				nearCacheLastAccessTTLSyncEnabled="true" />
+		</objectGrid>
 	</objectGrids>
 
 	<backingMapPluginCollections>
 
 		<backingMapPluginCollection id="all">
-			<bean id="MapIndexPlugin" className="com.ibm.websphere.objectgrid.plugins.index.HashIndex">
+			<bean id="MapIndexPlugin"
+				className="com.ibm.websphere.objectgrid.plugins.index.HashIndex">
 				<property name="Name" type="java.lang.String" value="DEPENDENCY_ID_INDEX"
 					description="index name" />
 				<property name="RangeIndex" type="boolean" value="false"
@@ -58,7 +58,8 @@
 				<property name="FieldAccessAttribute" type="boolean" value="true"
 					description="access the fields rather than getters" />
 			</bean>
-			<bean id="MapIndexPlugin" className="com.ibm.websphere.objectgrid.plugins.index.HashIndex">
+			<bean id="MapIndexPlugin"
+				className="com.ibm.websphere.objectgrid.plugins.index.HashIndex">
 				<property name="Name" type="java.lang.String" value="TEMPLATE_INDEX"
 					description="index name" />
 				<property name="RangeIndex" type="boolean" value="false"
@@ -73,7 +74,8 @@
 			<bean id="Evictor"
 				className="com.ibm.ws.objectgrid.dynacache.evictors.DistributedDynacacheEvictor" />
 			<bean id="Loader" className="com.ibm.ws.objectgrid.dynacache.DynacacheLoader" />
-			<bean id="OptimisticCallback" className="com.ibm.websphere.objectgrid.plugins.builtins.NoVersioningOptimisticCallback" />
+			<bean id="OptimisticCallback"
+				className="com.ibm.websphere.objectgrid.plugins.builtins.NoVersioningOptimisticCallback" />
 		</backingMapPluginCollection>
 
 	</backingMapPluginCollections>
